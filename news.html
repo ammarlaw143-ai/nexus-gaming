@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Gaming News – NexusPlay</title>
+<meta name="description" content="Latest gaming news, updates, reviews and announcements from the world of gaming."/>
+<script src="shared.js"></script><script>document.head.insertAdjacentHTML('beforeend',SHARED_CSS)</script>
+<style>
+.news-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ncard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:.25s}
+.ncard:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.5);border-color:rgba(132,204,22,.25)}
+.ncard img{width:100%;height:180px;object-fit:cover;transition:transform .5s}
+.ncard:hover img{transform:scale(1.04)}
+.ncard-body{padding:14px 16px 16px}
+.ncard-cat{font-size:9px;font-weight:800;color:var(--green);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.ncard h3{font-size:15px;font-weight:800;color:#fff;line-height:1.35;margin-bottom:7px}
+.ncard p{font-size:12px;color:var(--muted);line-height:1.6}
+.ncard-meta{display:flex;gap:8px;margin-top:10px;font-size:11px;color:var(--dim)}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.pill{padding:7px 16px;border-radius:100px;border:1px solid var(--border);font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:.2s}
+.pill:hover,.pill.active{border-color:var(--green);color:var(--green);background:rgba(132,204,22,.06)}
+</style>
+</head><body>
+<script>document.write(renderAnnounce());document.write(renderNavbar('News'))</script>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <span style="color:#fff">News</span></div>
+    <h1>📰 Gaming News</h1>
+    <p>Stay updated with the latest gaming news, reviews, trailers and announcements.</p>
+  </div>
+</div>
+
+<div class="section">
+  <!-- Featured article -->
+  <div style="margin-bottom:36px">
+    <a href="news/gta6-confirmed.html" style="display:grid;grid-template-columns:1.4fr 1fr;gap:0;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--border);cursor:pointer;transition:.25s" class="ncard" onmouseover="this.style.borderColor='rgba(132,204,22,.35)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)'">
+      <img src="https://placehold.co/700x360/0a1a0a/84cc16?text=GTA+VI+2025+Confirmed" style="width:100%;height:280px;object-fit:cover" alt="GTA 6"/>
+      <div style="padding:28px">
+        <span style="background:var(--green);color:#0f1117;font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:12px">BREAKING NEWS</span>
+        <h2 style="font-size:22px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:12px">GTA 6 Release Date Officially Confirmed for Fall 2025</h2>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7">Rockstar Games finally locks in a release window for the most anticipated game of the decade, with a brand-new trailer dropping this month.</p>
+        <div style="display:flex;gap:10px;margin-top:16px;font-size:12px;color:var(--dim)"><span>Maria Santos</span><span>·</span><span>Jun 20, 2026</span><span>·</span><span>4 min read</span></div>
+        <div style="margin-top:16px"><span class="btn-green" style="font-size:13px;padding:9px 18px">Read Article →</span></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Category filter -->
+  <div class="filter-pills">
+    <button class="pill active" onclick="filterNews(this,'')">All</button>
+    <button class="pill" onclick="filterNews(this,'NEWS')">News</button>
+    <button class="pill" onclick="filterNews(this,'HARDWARE')">Hardware</button>
+    <button class="pill" onclick="filterNews(this,'LAUNCH')">Launches</button>
+    <button class="pill" onclick="filterNews(this,'AWARDS')">Awards</button>
+    <button class="pill" onclick="filterNews(this,'FEATURE')">Features</button>
+  </div>
+
+  <div id="news-grid" class="news-full-grid"></div>
+</div>
+
+<div style="max-width:1300px;margin:0 auto;padding:0 32px 48px"><div class="ad-box">Advertisement</div></div>
+<script>document.write(renderFooter())</script>
+
+<script>
+const EXTRA_NEWS=[
+  {id:7,title:"Best Gaming Setups of 2026 — PC & Console",slug:"best-setups-2026",cat:"FEATURE",date:"Jun 8, 2026",author:"Alex Chen",read:"7 min",img:"https://placehold.co/400x225/0a0a1e/9966cc?text=Gaming+Setups",excerpt:"We round up the most impressive gaming stations built by the community this year."},
+  {id:8,title:"Call of Duty 2026: Everything We Know So Far",slug:"cod-2026",cat:"NEWS",date:"Jun 5, 2026",author:"Tom Williams",read:"5 min",img:"https://placehold.co/400x225/0a0a0a/888888?text=CoD+2026",excerpt:"Activision drops hints about the next entry in the iconic FPS franchise."},
+  {id:9,title:"Xbox Game Pass Adds 10 New AAA Titles This Month",slug:"gamepass-june",cat:"NEWS",date:"Jun 3, 2026",author:"Sarah Kim",read:"3 min",img:"https://placehold.co/400x225/0a0a1e/4466cc?text=Xbox+Game+Pass",excerpt:"Microsoft adds incredible value to Game Pass with a massive June lineup."},
+  {id:10,title:"ASUS ROG Ally X Review — The Best Handheld of 2026?",slug:"rog-ally-x-review",cat:"HARDWARE",date:"May 30, 2026",author:"James Park",read:"9 min",img:"https://placehold.co/400x225/0a0a0a/cc6600?text=ROG+Ally+X",excerpt:"We put the new ROG Ally X through its paces — here's our full verdict."},
+  {id:11,title:"Minecraft Celebrates 15 Years With Massive Free Update",slug:"minecraft-15-years",cat:"NEWS",date:"May 25, 2026",author:"Maria Santos",read:"4 min",img:"https://placehold.co/400x225/051205/66cc33?text=Minecraft+15",excerpt:"Mojang drops a landmark anniversary update with new biomes, mobs and mechanics."},
+  {id:12,title:"The Rise of AI-Generated Game Assets: Threat or Opportunity?",slug:"ai-game-assets",cat:"FEATURE",date:"May 20, 2026",author:"Li Wei",read:"11 min",img:"https://placehold.co/400x225/0a0a1e/ccaa33?text=AI+Game+Assets",excerpt:"We explore how AI tools are changing the way game studios create visual content."},
+];
+const ALL_NEWS=[...NEWS,...EXTRA_NEWS];
+let activeFilter='';
+function filterNews(btn,cat){
+  activeFilter=cat;
+  document.querySelectorAll('.pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderNews();
+}
+function renderNews(){
+  const list=activeFilter?ALL_NEWS.filter(n=>n.cat===activeFilter):ALL_NEWS;
+  document.getElementById('news-grid').innerHTML=list.map(n=>`
+    <a href="news/${n.slug}.html" class="ncard">
+      <img src="${n.img}" alt="${n.title}" loading="lazy"/>
+      <div class="ncard-body">
+        <div class="ncard-cat">${n.cat}</div>
+        <h3>${n.title}</h3>
+        <p>${n.excerpt}</p>
+        <div class="ncard-meta"><span>${n.author}</span><span>·</span><span>${n.date}</span><span>·</span><span>${n.read}</span></div>
+      </div>
+    </a>`).join('');
+}
+renderNews();
+</script>
+</body>
+</html>
